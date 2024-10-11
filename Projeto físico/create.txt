@@ -1,0 +1,194 @@
+-- Tabela para armazenar informações de currículos das pessoas
+CREATE TABLE PessoaCurriculo (
+    cpf VARCHAR2(11) PRIMARY KEY,
+    nome VARCHAR2(100),
+    sexo CHAR(1),
+    rg VARCHAR2(20),
+    email VARCHAR2(100),
+    dataNascimento DATE,
+    endCEP VARCHAR2(10),
+    endCidade VARCHAR2(50),
+    endRua VARCHAR2(100),
+    endBairro VARCHAR2(50),
+    url VARCHAR2(200),
+    telefonePrincipal VARCHAR2(15),
+    telefoneSecundario VARCHAR2(15)
+);
+
+-- Tabela para armazenar a idade das pessoas com base na data de nascimento
+CREATE TABLE PessoaIdade (
+    dataNascimento DATE PRIMARY KEY,
+    idade NUMBER
+);
+
+-- Tabela para armazenar publicações de pessoas
+CREATE TABLE Publicacao (
+    cpf VARCHAR2(11),
+    publicacao VARCHAR2(200),
+    PRIMARY KEY (cpf, publicacao),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar certificações de pessoas
+CREATE TABLE Certificacao (
+    cpf VARCHAR2(11),
+    certificacao VARCHAR2(100),
+    PRIMARY KEY (cpf, certificacao),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar habilidades de pessoas
+CREATE TABLE Habilidade (
+    cpf VARCHAR2(11),
+    habilidade VARCHAR2(100),
+    PRIMARY KEY (cpf, habilidade),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar formações de pessoas
+CREATE TABLE Formacao (
+    cpf VARCHAR2(11),
+    formacao VARCHAR2(100),
+    PRIMARY KEY (cpf, formacao),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar experiências de trabalho de pessoas
+CREATE TABLE Experiencia (
+    cpf VARCHAR2(11),
+    experiencia VARCHAR2(200),
+    PRIMARY KEY (cpf, experiencia),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar idiomas falados por pessoas
+CREATE TABLE Idioma (
+    cpf VARCHAR2(11),
+    idioma VARCHAR2(50),
+    PRIMARY KEY (cpf, idioma),
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar informações de professores
+CREATE TABLE Professor (
+    cpf VARCHAR2(11) PRIMARY KEY,
+    tipo VARCHAR2(50),
+    salario NUMBER,
+    FOREIGN KEY (cpf) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar disciplinas ministradas por professores
+CREATE TABLE Disciplina (
+    cpf_professor VARCHAR2(11),
+    disciplina VARCHAR2(100),
+    PRIMARY KEY (cpf_professor, disciplina),
+    FOREIGN KEY (cpf_professor) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar informações de alunos
+CREATE TABLE Aluno (
+    cpf_aluno VARCHAR2(11) PRIMARY KEY,
+    FOREIGN KEY (cpf_aluno) REFERENCES PessoaCurriculo(cpf)
+);
+
+-- Tabela para armazenar vínculos entre alunos e suas matrículas
+CREATE TABLE Vinculo (
+    cpf_aluno VARCHAR2(11),
+    matricula VARCHAR2(20),
+    PRIMARY KEY (cpf_aluno, matricula),
+    FOREIGN KEY (cpf_aluno) REFERENCES Aluno(cpf_aluno)
+);
+
+
+-- Tabela para armazenar informações de cursos vinculados
+CREATE TABLE CursoVinculo (
+    matricula VARCHAR2(20) PRIMARY KEY,
+    cpf VARCHAR2(11),
+    curso VARCHAR2(100),
+    mediaGeral NUMBER,
+    historicoEscolar VARCHAR2(255),
+    situacaoAcademica VARCHAR2(50),
+    semestreEntrada VARCHAR2(10),
+    FOREIGN KEY (cpf, matricula) REFERENCES Vinculo(cpf_aluno, matricula)
+);
+
+-- Tabela para armazenar informações de empresas
+CREATE TABLE Empresa (
+    cnpj VARCHAR2(14) PRIMARY KEY,
+    nome VARCHAR2(100),
+    website VARCHAR2(100),
+    email VARCHAR2(100),
+    endCEP VARCHAR2(10),
+    endCidade VARCHAR2(50),
+    endRua VARCHAR2(100),
+    endBairro VARCHAR2(50)
+);
+
+-- Tabela para armazenar informações sobre vagas de emprego
+CREATE TABLE Vaga (
+    id NUMBER PRIMARY KEY,
+    descricao VARCHAR2(255),
+    status VARCHAR2(50),
+    hora TIMESTAMP,
+    data DATE,
+    cnpj VARCHAR2(14),
+    FOREIGN KEY (cnpj) REFERENCES Empresa(cnpj)
+);
+
+-- Tabela para armazenar indicações de vagas
+CREATE TABLE Indicacao (
+    id NUMBER PRIMARY KEY,
+    observacoes VARCHAR2(200),
+    status VARCHAR2(50),
+    hora TIMESTAMP,
+    data DATE,
+    idVaga NUMBER,
+    FOREIGN KEY (idVaga) REFERENCES Vaga(id)
+);
+
+-- Tabela para armazenar requisitos de vagas
+CREATE TABLE Requisito (
+    id_vaga NUMBER,
+    requisito VARCHAR2(100),
+    PRIMARY KEY (id_vaga, requisito),
+    FOREIGN KEY (id_vaga) REFERENCES Vaga(id)
+);
+
+-- Tabela para armazenar benefícios de vagas
+CREATE TABLE Beneficio (
+    id_vaga NUMBER,
+    beneficio VARCHAR2(255),
+    PRIMARY KEY (id_vaga, beneficio),
+    FOREIGN KEY (id_vaga) REFERENCES Vaga(id)
+);
+
+-- Tabela para armazenar telefones das empresas
+CREATE TABLE Telefone (
+    cnpj VARCHAR2(14),
+    telefone VARCHAR2(15),
+    PRIMARY KEY (cnpj, telefone),
+    FOREIGN KEY (cnpj) REFERENCES Empresa(cnpj)
+);
+
+-- Tabela para armazenar candidaturas de alunos a vagas
+CREATE TABLE Candidata (
+    cpf_aluno VARCHAR2(11),
+    id_vaga NUMBER,
+    data DATE,
+    hora TIMESTAMP,
+    status VARCHAR2(50),
+    PRIMARY KEY (cpf_aluno, id_vaga, data, hora),
+    FOREIGN KEY (cpf_aluno) REFERENCES Aluno(cpf_aluno),
+    FOREIGN KEY (id_vaga) REFERENCES Vaga(id)
+);
+
+-- Tabela para armazenar ações de professores em relação a indicações
+CREATE TABLE Faz (
+    cpf_professor VARCHAR2(11),
+    id_indicacao NUMBER,
+    cpfAluno VARCHAR2(11),
+    PRIMARY KEY (cpf_professor, id_indicacao),
+    FOREIGN KEY (cpf_professor) REFERENCES PessoaCurriculo(cpf),
+    FOREIGN KEY (id_indicacao) REFERENCES Indicacao(id),
+    FOREIGN KEY (cpfAluno) REFERENCES PessoaCurriculo(cpf)
+);

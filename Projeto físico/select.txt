@@ -1,0 +1,61 @@
+1) Alunos do curso Sistemas de informação ordenados por média geral
+
+SELECT * 
+    FROM cursoVinculo 
+WHERE curso = 'Sistemas de Informação' 
+    ORDER BY mediaGeral desc;
+
+
+2) Número de vagas agrupadas por status
+
+SELECT Status, COUNT(*) FROM Vaga
+GROUP BY Status;
+
+
+3) CPFs dos primeiros dois alunos que se candidataram a mais de uma vaga de emprego, juntamente com a contagem de suas candidaturas.
+
+SELECT 
+    cpf_aluno, 
+    COUNT(id_vaga) AS total_candidaturas
+FROM 
+    Candidata
+GROUP BY 
+    cpf_aluno
+HAVING 
+    COUNT(id_vaga) > 1
+FETCH FIRST 2 ROWS ONLY;
+
+
+4) Informações sobre alunos que se candidataram a vagas de emprego, mostrando a descrição da vaga e a média geral dos alunos, limitando os resultados aos 5 alunos com as maiores médias.
+
+SELECT 
+    c.cpf_aluno, 
+    v.descricao AS vaga_descricao, 
+    cv.mediaGeral
+FROM 
+    Candidata c
+JOIN 
+    Vaga v ON c.id_vaga = v.id
+JOIN 
+    Vinculo vi ON c.cpf_aluno = vi.cpf_aluno
+JOIN 
+    CursoVinculo cv ON vi.matricula = cv.matricula
+ORDER BY 
+    cv.mediaGeral DESC
+FETCH FIRST 5 ROWS ONLY;
+
+5) Obter as habilidades de pessoas que falam mais de um idioma
+
+SELECT 
+    f.cpf,
+    f.habilidade
+FROM 
+    habilidade f
+WHERE 
+    f.cpf IN (
+        SELECT cpf
+        FROM Idioma
+        GROUP BY cpf
+        HAVING COUNT(idioma) > 1
+    );
+

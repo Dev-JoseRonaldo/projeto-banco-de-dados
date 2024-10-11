@@ -1,0 +1,220 @@
+-- Inserir registros na tabela PessoaCurriculo
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678902', 'José Ronaldo', 'M', '9574114', 'jr@cin.ufpe.br', TO_DATE('1980-02-02', 'YYYY-MM-DD'), '55471002', 'Glória do Goitá', 'Rua 3 Marias', 'Bairro Centro', 'http://jrss.com', '81996588475', '8136529987');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678903', 'Vitória Beatriz', 'F', '9854771', 'vb@cin.ufpe.br', TO_DATE('1982-03-03', 'YYYY-MM-DD'), '55555000', 'Limoeiro', 'Rua CarlosFerreira', 'Bairro Tamarindos', 'http://vbas.com', '81995673241', '8138776500');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678904', 'Ana Pereira', 'F', '9558224', 'ap@cin.ufpe.br', TO_DATE('1985-04-04', 'YYYY-MM-DD'), '55471669', 'Carpina', 'Rua João Vieira Bezerra', 'Bairro Vila Boa Esperança', 'http://anapereira.com', '81995887744', '8133225147');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678905', 'Pedro Souza', 'M', '9557486', 'ps@cin.ufpe.br', TO_DATE('1981-05-05', 'YYYY-MM-DD'), '59874111', 'Recife', 'Rua Maurício de Nassau', 'Bairro Torre', 'http://pedross.com', '81994475551', '8135547715');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678906', 'Laura Lima', 'F', '9854662', 'll@cin.ufpe.br', TO_DATE('1983-06-06', 'YYYY-MM-DD'), '52741105', 'Feira Nova', 'Rua Adel Pedroso', 'Bairro Salinas', 'http://laura122.com', '81995477887', '8132258559');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678907', 'Lucas Silva', 'M', '9558333', 'ls@cin.ufpe.br', TO_DATE('2005-01-15', 'YYYY-MM-DD'), '55551111', 'Olinda', 'Rua das Flores', 'Bairro Novo', 'http://lucassilva.com', '81995553322', '8133322555');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678908', 'Maria Clara', 'F', '9777111', 'mc@cin.ufpe.br', TO_DATE('2004-02-20', 'YYYY-MM-DD'), '55552222', 'Jaboatão', 'Rua Dom Pedro', 'Bairro Piedade', 'http://mariaclara.com', '81994441122', '8132244557');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678909', 'Roberto Gomes', 'M', '9888444', 'rg@cin.ufpe.br', TO_DATE('2003-03-10', 'YYYY-MM-DD'), '55553333', 'Recife', 'Rua das Acácias', 'Bairro Boa Vista', 'http://robertogomes.com', '81993339988', '8133444558');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678910', 'Bruna Torres', 'F', '9777888', 'bt@cin.ufpe.br', TO_DATE('2004-04-05', 'YYYY-MM-DD'), '55554444', 'Paulista', 'Rua do Sol', 'Bairro Centro', 'http://brunatorres.com', '81992228855', '8133226677');
+INSERT INTO PessoaCurriculo (cpf, nome, sexo, rg, email, dataNascimento, endCEP, endCidade, endRua, endBairro, url, telefonePrincipal, telefoneSecundario) 
+VALUES ('12345678911', 'Felipe Andrade', 'M', '9777999', 'fa@cin.ufpe.br', TO_DATE('2005-05-01', 'YYYY-MM-DD'), '55555555', 'Camaragibe', 'Rua das Palmeiras', 'Bairro São Lourenço', 'http://felipeandrade.com', '81991119922', '8132111888');
+
+-- Inserir registros na tabela PessoaIdade com cálculo automático da idade
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('1980-02-02', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('1980-02-02', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('1982-03-03', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('1982-03-03', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('1985-04-04', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('1985-04-04', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('1981-05-05', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('1981-05-05', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('1983-06-06', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('1983-06-06', 'YYYY-MM-DD')) / 12)); 
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('2005-01-15', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('2005-01-15', 'YYYY-MM-DD')) / 12)); 
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('2004-02-20', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('2004-02-20', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('2003-03-10', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('2003-03-10', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('2004-04-05', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('2004-04-05', 'YYYY-MM-DD')) / 12));
+INSERT INTO PessoaIdade (dataNascimento, idade) 
+VALUES (TO_DATE('2005-05-01', 'YYYY-MM-DD'), TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE('2005-05-01', 'YYYY-MM-DD')) / 12));
+
+-- Inserir registros na tabela Publicacao
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678902', 'O futuro da IA: Como a aprendizagem de máquina irá transformar a segurança dos dados');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678903', 'Computação quântica e o impacto dela na infraestrutura de nuvem');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678904', 'Blockchain além das criptomoedas: Revolucionando a gestão de cadeias de suprimentos');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678905', 'Aproveitando IoT para cidades inteligentes: Desafios e oportunidades');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678906', 'O dilema ético dos sistemas autônomos na saúde');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678910', 'Explorando Novas Tendências em Design Gráfico');
+INSERT INTO Publicacao (cpf, publicacao) VALUES ('12345678911', 'Desenvolvimento de Algoritmos em C++ para Análise de Dados');
+
+-- Inserir registros na tabela Certificacao
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678902', 'CompTIA A+');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678903', 'Cisco Certified Network Associate (CCNA)');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678904', 'Microsoft Certified: Azure Fundamentals');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678905', 'AWS Certified Solutions Architect – Associate');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678906', 'Google Professional Cloud Architect');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678907', 'Certified Web Developer');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678908', 'IT Support Specialist Certification');
+INSERT INTO Certificacao (cpf, certificacao) VALUES ('12345678909', 'Data Analysis Professional Certification');
+
+-- Inserir registros na tabela Habilidade
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678907', 'JavaScript');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678907', 'HTML e CSS');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678907', 'React');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678907', 'Node.js');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678908', 'Suporte Técnico');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678908', 'Comunicação Interpessoal');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678908', 'Linux');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678908', 'Redes de Computadores');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678909', 'Python');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678909', 'SQL');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678909', 'Análise de Dados');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678909', 'Power BI');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678910', 'Adobe Photoshop');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678910', 'Design Gráfico');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678910', 'Illustrator');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678910', 'UI/UX Design');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678911', 'C++');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678911', 'Análise de Sistemas');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678911', 'Algoritmos');
+INSERT INTO Habilidade (cpf, habilidade) VALUES ('12345678911', 'Desenvolvimento de Software');
+
+-- Inserir registros na tabela Formacao
+INSERT INTO Formacao (cpf, formacao) VALUES ('12345678902', 'Phd Data Gov');
+INSERT INTO Formacao (cpf, formacao) VALUES ('12345678903', 'Sistemas de Informação');
+INSERT INTO Formacao (cpf, formacao) VALUES ('12345678904', 'Pós-graduação em Engenharia de Software');
+INSERT INTO Formacao (cpf, formacao) VALUES ('12345678905', 'Engenharia da Computação');
+INSERT INTO Formacao (cpf, formacao) VALUES ('12345678906', 'Ciência da Computação');
+
+-- Inserir registros na tabela Experiencia
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678902', 'Alpha');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678903', 'Beta');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678904', 'Gamma');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678905', 'Alpha');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678906', 'Beta');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678907', 'Alpha');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678908', 'Beta');
+INSERT INTO Experiencia (cpf, experiencia) VALUES ('12345678909', 'Gamma');
+
+-- Inserir registros na tabela Idioma
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678907', 'Inglês');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678907', 'Espanhol');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678908', 'Francês');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678908', 'Espanhol');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678910', 'Alemão');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678911', 'Italiano');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678902', 'Hebraico');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678903', 'Inglês');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678904', 'Espanhol');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678907', 'Francês');
+INSERT INTO Idioma (cpf, idioma) VALUES ('12345678906', 'Alemão');
+
+-- Inserir registros na tabela Professor
+INSERT INTO Professor (cpf, tipo, salario) VALUES ('12345678902', 'Professor Assistente', 3000);
+INSERT INTO Professor (cpf, tipo, salario) VALUES ('12345678903', 'Professor Titular', 5000);
+INSERT INTO Professor (cpf, tipo, salario) VALUES ('12345678904', 'Professor Substituto', 2500);
+INSERT INTO Professor (cpf, tipo, salario) VALUES ('12345678905', 'Professor Adjunto I', 3500);
+INSERT INTO Professor (cpf, tipo, salario) VALUES ('12345678906', 'Professor Adjunto II', 4000);
+
+-- Inserir registros na tabela Disciplina
+INSERT INTO Disciplina (cpf_professor, disciplina) VALUES ('12345678902', 'Engenharia de Requisitos');
+INSERT INTO Disciplina (cpf_professor, disciplina) VALUES ('12345678903', 'Mineração de Dados');
+INSERT INTO Disciplina (cpf_professor, disciplina) VALUES ('12345678904', 'Banco de Dados');
+INSERT INTO Disciplina (cpf_professor, disciplina) VALUES ('12345678905', 'Segurança da Informação');
+INSERT INTO Disciplina (cpf_professor, disciplina) VALUES ('12345678906', 'Rede de Computadores');
+
+-- Inserir registros na tabela Aluno
+INSERT INTO Aluno (cpf_aluno) VALUES ('12345678907');
+INSERT INTO Aluno (cpf_aluno) VALUES ('12345678908');
+INSERT INTO Aluno (cpf_aluno) VALUES ('12345678909');
+INSERT INTO Aluno (cpf_aluno) VALUES ('12345678910');
+INSERT INTO Aluno (cpf_aluno) VALUES ('12345678911');
+
+-- Inserir registros na tabela Vinculo
+INSERT INTO Vinculo (cpf_aluno, matricula) VALUES ('12345678907', '43753355230');
+INSERT INTO Vinculo (cpf_aluno, matricula) VALUES ('12345678908', '43753355231');
+INSERT INTO Vinculo (cpf_aluno, matricula) VALUES ('12345678909', '43753355232');
+INSERT INTO Vinculo (cpf_aluno, matricula) VALUES ('12345678910', '43753355233');
+INSERT INTO Vinculo (cpf_aluno, matricula) VALUES ('12345678911', '43753355234');
+
+-- Inserir registros na tabela CursoVinculo
+INSERT INTO CursoVinculo (matricula, cpf, curso, mediaGeral, historicoEscolar, situacaoAcademica, semestreEntrada) 
+VALUES ('43753355230', '12345678907', 'Ciência da Computação', 7.4, 'https://historico-escolar/4587', 'Ativo', '2023-2');
+INSERT INTO CursoVinculo (matricula, cpf, curso, mediaGeral, historicoEscolar, situacaoAcademica, semestreEntrada) 
+VALUES ('43753355231', '12345678908', 'Sistemas de Informação', 8.2, 'https://historico-escolar/1248', 'Ativo', '2023-2');
+INSERT INTO CursoVinculo (matricula, cpf, curso, mediaGeral, historicoEscolar, situacaoAcademica, semestreEntrada) 
+VALUES ('43753355232', '12345678909', 'Sistemas de Informação', 7.8, 'https://historico-escolar/0248', 'Ativo', '2023-2');
+INSERT INTO CursoVinculo (matricula, cpf, curso, mediaGeral, historicoEscolar, situacaoAcademica, semestreEntrada) 
+VALUES ('43753355233', '12345678910', 'Sistemas de Informação', 5.1, 'https://historico-escolar/0147', 'Ativo', '2023-2');
+INSERT INTO CursoVinculo (matricula, cpf, curso, mediaGeral, historicoEscolar, situacaoAcademica, semestreEntrada) 
+VALUES ('43753355234', '12345678911', 'Engenharia da Computação', 8.0, 'https://historico-escolar/7458', 'Ativo', '2023-2');
+
+-- Inserir registros na tabela Empresa
+INSERT INTO Empresa (cnpj, nome, website, email, endCEP, endCidade, endRua, endBairro) 
+VALUES ('12345678000195', 'Tempest', 'https://www.tempest.com.br/', 'contato@tempest.com', '50030030', 'Recife', 'R. Alfândega, 35', 'Paço Alfândega');
+INSERT INTO Empresa (cnpj, nome, website, email, endCEP, endCidade, endRua, endBairro) 
+VALUES ('12345678000196', 'NTT Data', 'https://br.nttdata.com/', 'contato@nttdata.com', '50030240', 'Recife', 'R. de São Jorge, 240 - 5 andar - Recife', 'Recife');
+INSERT INTO Empresa (cnpj, nome, website, email, endCEP, endCidade, endRua, endBairro) 
+VALUES ('12345678000197', 'Neurotech', 'https://www.neurotech.com.br/', 'contato@neurotech.com', '12345680', 'Recife', 'R. de São Jorge, 240', 'Recife');
+INSERT INTO Empresa (cnpj, nome, website, email, endCEP, endCidade, endRua, endBairro) 
+VALUES ('12345678000198', 'Sidi', 'https://www.sidi.org.br/pt-br/', 'contato@sidi.com', '12345681', 'Recife', 'Av. República do Líbano, 251', 'Pina');
+INSERT INTO Empresa (cnpj, nome, website, email, endCEP, endCidade, endRua, endBairro) 
+VALUES ('12345678000199', 'Cesar School', 'https://www.cesar.school/', 'contato@cesarschool.com', '50030220', 'Recife', 'Avenida Cais do Apolo, 77', 'Recife');
+
+-- Inserir registros na tabela Vaga
+INSERT INTO Vaga (id, descricao, status, hora, data, cnpj) VALUES (1, 'Vaga de Desenvolvimento Web', 'Aberta', SYSTIMESTAMP, TO_DATE('2024-10-10', 'YYYY-MM-DD'), '12345678000195');
+INSERT INTO Vaga (id, descricao, status, hora, data, cnpj) VALUES (2, 'Vaga de Designer Gráfico', 'Aberta', SYSTIMESTAMP, TO_DATE('2024-10-11', 'YYYY-MM-DD'), '12345678000195');
+INSERT INTO Vaga (id, descricao, status, hora, data, cnpj) VALUES (3, 'Vaga de Analista de Dados', 'Fechada', SYSTIMESTAMP, TO_DATE('2024-10-12', 'YYYY-MM-DD'), '12345678000195');
+INSERT INTO Vaga (id, descricao, status, hora, data, cnpj) VALUES (4, 'Vaga de Gerente de Projetos', 'Aberta', SYSTIMESTAMP, TO_DATE('2024-10-13', 'YYYY-MM-DD'), '12345678000195');
+INSERT INTO Vaga (id, descricao, status, hora, data, cnpj) VALUES (5, 'Vaga de Especialista em Marketing', 'Aberta', SYSTIMESTAMP, TO_DATE('2024-10-14', 'YYYY-MM-DD'), '12345678000195');
+
+-- Inserir registros na tabela Indicacao
+INSERT INTO Indicacao (id, observacoes, status, hora, data, idVaga) VALUES (1, 'Observação sobre a vaga de Desenvolvimento Web', 'Aguardando', SYSTIMESTAMP, TO_DATE('2024-10-10', 'YYYY-MM-DD'), 1);
+INSERT INTO Indicacao (id, observacoes, status, hora, data, idVaga) VALUES (2, 'Observação sobre a vaga de Designer Gráfico', 'Aguardando', SYSTIMESTAMP, TO_DATE('2024-10-11', 'YYYY-MM-DD'), 2);
+INSERT INTO Indicacao (id, observacoes, status, hora, data, idVaga) VALUES (3, 'Observação sobre a vaga de Analista de Dados', 'Aceita', SYSTIMESTAMP, TO_DATE('2024-10-12', 'YYYY-MM-DD'), 3);
+INSERT INTO Indicacao (id, observacoes, status, hora, data, idVaga) VALUES (4, 'Observação sobre a vaga de Gerente de Projetos', 'Aguardando', SYSTIMESTAMP, TO_DATE('2024-10-13', 'YYYY-MM-DD'), 4);
+INSERT INTO Indicacao (id, observacoes, status, hora, data, idVaga) VALUES (5, 'Observação sobre a vaga de Especialista em Marketing', 'Rejeitada', SYSTIMESTAMP, TO_DATE('2024-10-14', 'YYYY-MM-DD'), 5);
+
+-- Inserir registros na tabela Requisito
+INSERT INTO Requisito (id_vaga, requisito) VALUES (1, 'Conhecimento em JavaScript');
+INSERT INTO Requisito (id_vaga, requisito) VALUES (1, 'Experiência em React');
+INSERT INTO Requisito (id_vaga, requisito) VALUES (2, 'Experiência em Photoshop');
+INSERT INTO Requisito (id_vaga, requisito) VALUES (3, 'Conhecimento em SQL');
+INSERT INTO Requisito (id_vaga, requisito) VALUES (4, 'Gestão de equipes');
+
+-- Inserir registros na tabela Beneficio
+INSERT INTO Beneficio (id_vaga, beneficio) VALUES (1, 'Vale transporte');
+INSERT INTO Beneficio (id_vaga, beneficio) VALUES (1, 'Plano de saúde');
+INSERT INTO Beneficio (id_vaga, beneficio) VALUES (2, 'Flexibilidade de horário');
+INSERT INTO Beneficio (id_vaga, beneficio) VALUES (3, 'Bônus por desempenho');
+INSERT INTO Beneficio (id_vaga, beneficio) VALUES (4, 'Curso de inglês');
+
+-- Inserir registros na tabela Telefone
+INSERT INTO Telefone (cnpj, telefone) VALUES ('12345678000195', '123456789');
+INSERT INTO Telefone (cnpj, telefone) VALUES ('12345678000195', '987654321');
+INSERT INTO Telefone (cnpj, telefone) VALUES ('12345678000195', '555555555');
+INSERT INTO Telefone (cnpj, telefone) VALUES ('12345678000195', '444444444');
+INSERT INTO Telefone (cnpj, telefone) VALUES ('12345678000195', '333333333');
+
+-- Inserir registros na tabela Candidata
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678907', 1, TO_DATE('2024-10-10', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Aprovada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678908', 2, TO_DATE('2024-10-11', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Em Análise');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678909', 3, TO_DATE('2024-10-12', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Rejeitada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678910', 4, TO_DATE('2024-10-13', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Aprovada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678911', 5, TO_DATE('2024-10-14', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Em Análise');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678910', 3, TO_DATE('2024-10-12', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Rejeitada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678910', 1, TO_DATE('2024-10-13', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Aprovada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678908', 5, TO_DATE('2024-10-14', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Em Análise');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678910', 1, TO_DATE('2024-10-10', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Aprovada');
+INSERT INTO Candidata (cpf_aluno, id_vaga, data, hora, status) VALUES ('12345678910', 2, TO_DATE('2024-10-11', 'YYYY-MM-DD'), SYSTIMESTAMP, 'Candidatura Em Análise');
+
+-- Inserir registros na tabela Faz
+INSERT INTO Faz (cpf_professor, id_indicacao, cpfAluno) VALUES ('12345678902', 1, '12345678907');
+INSERT INTO Faz (cpf_professor, id_indicacao, cpfAluno) VALUES ('12345678903', 2, '12345678908');
+INSERT INTO Faz (cpf_professor, id_indicacao, cpfAluno) VALUES ('12345678904', 3, '12345678909');
+INSERT INTO Faz (cpf_professor, id_indicacao, cpfAluno) VALUES ('12345678905', 4, '12345678910');
+INSERT INTO Faz (cpf_professor, id_indicacao, cpfAluno) VALUES ('12345678906', 5, '12345678911');
